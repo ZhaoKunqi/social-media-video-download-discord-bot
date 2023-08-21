@@ -27,9 +27,9 @@ async def on_message(message):
             filename = ydl.prepare_filename(info_dict)
 
         s3_filename = os.path.basename(filename)
-        os.system(f's3cmd put {filename} s3://twitter-archive/{s3_filename} --acl-public')
+        os.system(f's3cmd put {filename} s3://Your-Bucket-Name/{s3_filename} --acl-public')
 
-        reply_message = f"""```{message.content}```\n```https://s3.futa.online/twitter-archive/{s3_filename}```"""
+        reply_message = f"""Original Address:\n```{message.content}```\nObject Storage Address:\n```https://Your-S3-Address/Your-Bucket-Name/{s3_filename}```"""
         await message.channel.send(reply_message, file=discord.File(f'/root/discord/Quincy0v0/downloads/{s3_filename}'))
 
         os.remove(filename)
