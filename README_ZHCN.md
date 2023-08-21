@@ -74,6 +74,10 @@
 - 用您希望缓存下载的视频的路径替换 `'/root/discord/bot/downloads/'`。
 - 用您的 Twitter cookies 文件的路径替换 `'cookies-twitter.txt'`。这对于 `yt-dlp` 能够从 Twitter 下载视频是必需的。
 
+## 效果预览
+
+![example01.jpg](example01.jpg)
+
 ## 贡献
 
 如果您想为该项目做出贡献，请随时 fork 该存储库并提交拉取请求。我们也欢迎您遇到的任何问题。
