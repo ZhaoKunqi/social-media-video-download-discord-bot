@@ -74,6 +74,10 @@ To use this bot, you will need to make some changes to the `main.py` file:
 - Replace `'/root/discord/bot/downloads/'` with the path where you want to cache the downloaded videos.
 - Replace `'cookies-twitter.txt'` with the path to your Twitter cookies file. This is necessary for `yt-dlp` to be able to download videos from Twitter.
 
+## Demo
+
+![example01.jpg](example01.jpg)
+
 ## Contribution
 
 If you want to contribute to this project, please feel free to fork the repository and submit a pull request. We also welcome any issues you may encounter.
