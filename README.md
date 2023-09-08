@@ -1,5 +1,8 @@
 # Discord Twitter 视频下载机器人
 
+
+[中文(中华人民共和国)文档(当前页面)] | [English Document](README_ENUS.md) | [Other language is working in progress](404.md)
+
 该项目是一个 Discord 机器人，可以自动从私信中接收的 Twitter 链接下载视频。它使用 `yt-dlp`，一个用于从 Twitter.com 下载视频的 Python 库和命令行程序，从 Twitter 链接中获取视频。下载完成后，它会将文件上传到 S3 存储桶，并通过私信向您发送原始的 Twitter 链接和新的 S3 链接的消息。该消息还包含视频文件作为附件。
 
 ## 功能
