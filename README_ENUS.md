@@ -4,6 +4,10 @@
 
 This project is a Discord bot that automatically downloads videos from Twitter links received from DM. It uses `yt-dlp`, a python library and command-line program to download videos from Twitter.com, to fetch the video from the Twitter link. After downloading the video, it uploads the file to an S3 bucket and then sends a message to your DM with the original Twitter link and the new S3 link. It also includes the video file as an attachment in the message. 
 
+## Demo
+
+![example01.jpg](example01.jpg)
+
 ## Features
 
 - Detects Twitter links in Discord messages and automatically downloads the associated video.
@@ -73,10 +77,6 @@ To use this bot, you will need to make some changes to the `main.py` file:
 - Replace `'Your-Bucket-Name'` and `'Your-S3-Address'` with the name and address of your S3 bucket respectively.
 - Replace `'/root/discord/bot/downloads/'` with the path where you want to cache the downloaded videos.
 - Replace `'cookies-twitter.txt'` with the path to your Twitter cookies file. This is necessary for `yt-dlp` to be able to download videos from Twitter.
-
-## Demo
-
-![example01.jpg](example01.jpg)
 
 ## Contribution
 
