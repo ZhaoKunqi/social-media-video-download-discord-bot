@@ -5,6 +5,10 @@
 
 该项目是一个 Discord 机器人，可以自动从私信中接收的 Twitter 链接下载视频。它使用 `yt-dlp`，一个用于从 Twitter.com 下载视频的 Python 库和命令行程序，从 Twitter 链接中获取视频。下载完成后，它会将文件上传到 S3 存储桶，并通过私信向您发送原始的 Twitter 链接和新的 S3 链接的消息。该消息还包含视频文件作为附件。
 
+## 效果预览
+
+![example01.jpg](example01.jpg)
+
 ## 更新记录:
 
 2023年-09月-10日: 因为现在X.com(Twitter)的App更改成会在分享复制链接时自动生成x.com的链接，所以也改成了识别x.com链接中视频。
@@ -80,10 +84,6 @@
 - 用您的 S3 存储桶名称和地址分别替换 `'Your-Bucket-Name'` 和 `'Your-S3-Address'`。
 - 用您希望缓存下载的视频的路径替换 `'/root/discord/bot/downloads/'`。
 - 用您的 Twitter cookies 文件的路径替换 `'cookies-twitter.txt'`。这对于 `yt-dlp` 能够从 Twitter 下载视频是必需的。
-
-## 效果预览
-
-![example01.jpg](example01.jpg)
 
 ## 贡献
 
