@@ -26,7 +26,7 @@
 
 目前提供一个不带S3备份功能的Bot, 可以免费使用, 当前频率限制为: 每个Discord账号/60个视频/每小时
 
-机器人链接: https://discord.com/api/oauth2/authorize?client_id=1153911158730928128&permissions=0&scope=bot
+机器人链接(无需权限): https://discord.com/api/oauth2/authorize?client_id=1153911158730928128&permissions=0&scope=bot
 
 随便加进来私聊发给他推特链接(x.com的)即可使用
 
