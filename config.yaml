@@ -22,7 +22,7 @@ enable-s3-backup: True
 
 # s3 api server address
 # s3 api服务器地址
-s3-endpoint: http://1.1.4.5:14198
+s3-endpoint: http://11.45.14.19:19810
 
 # the access key and secret key for s3
 # s3服务器验证的密钥
