@@ -74,6 +74,7 @@
 - `x-cookie`：指定 X.com 的 cookie 文件
 - `enable-s3-backup`：是否启用 S3 备份。如果为 false，则其他 S3 配置将不会生效
 - `s3-endpoint`：S3 API 服务器地址
+- `s3-access-front-end`：S3前端地址,会出现在发送给用户的消息中
 - `s3-access-key` 和 `s3-secret-key`：S3 服务器验证的密钥
 - `s3-bucket-name`：Bucket 名称（必须提前创建好，并且您需要有访问权限）
 
