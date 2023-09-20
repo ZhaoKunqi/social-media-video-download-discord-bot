@@ -1,3 +1,4 @@
 discord
 yt_dlp
 boto3
+pyyaml
