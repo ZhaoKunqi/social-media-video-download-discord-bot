@@ -1,5 +1,7 @@
 import discord
 import yt_dlp
+import boto3
+import pyyaml
 import os
 
 client = discord.Client(intents=discord.Intents.default())
