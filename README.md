@@ -22,8 +22,17 @@
 2023年-09月-10日: 因为现在X.com(Twitter)的App更改成会在分享复制链接时自动生成x.com的链接，所以也改成了识别x.com链接中视频。
 
 
+## 直接使用
 
-## 在 RHEL-based Linux 发行版上的安装和使用
+目前提供一个不带S3备份功能的Bot, 可以免费使用, 使用频率限制60个视频/每小时
+
+机器人链接: https://discord.com/api/oauth2/authorize?client_id=1153911158730928128&permissions=0&scope=bot
+
+随便加进来私聊发给他推特链接(x.com的)即可使用
+
+## 自己部署
+
+在 RHEL-based Linux 发行版上的安装和使用
 
 这里使用Alma Linux 9
 
