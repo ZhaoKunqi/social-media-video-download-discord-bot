@@ -48,7 +48,7 @@ async def on_message(message):
             with open(filename, 'rb') as data:
                 s3.upload_fileobj(data, cfg['s3-bucket-name'], s3_filename, ExtraArgs={'ACL': 'public-read'})
 
-            reply_message = f"""Original Address:\n```{message.content}```\nObject Storage Address:\n```{cfg["s3-endpoint"]}/{cfg["s3-bucket-name"]}/{s3_filename}```"""
+            reply_message = f"""Original Address:\n```{message.content}```\nObject Storage Address:\n```{cfg["s3-access-front-end"]}/{cfg["s3-bucket-name"]}/{s3_filename}```"""
             await message.channel.send(reply_message, file=discord.File(cfg['cache-directory'] + '/' + s3_filename))
         else:
             reply_message = f"""Original Address:\n```{message.content}```"""
