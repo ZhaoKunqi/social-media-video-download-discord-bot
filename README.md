@@ -75,17 +75,20 @@
 
 7. 运行机器人：
    ```
-   python main.py
+   python3 main.py
    ```
+配置
 
-## 配置
+要使用该机器人，您需要对 config.yml 文件进行一些更改。
 
-要使用该机器人，您需要对 `main.py` 文件进行一些更改：
-
-- 用您的 Discord 机器人令牌替换 `'Your-Discord-App-Token'`。
-- 用您的 S3 存储桶名称和地址分别替换 `'Your-Bucket-Name'` 和 `'Your-S3-Address'`。
-- 用您希望缓存下载的视频的路径替换 `'/root/discord/bot/downloads/'`。
-- 用您的 Twitter cookies 文件的路径替换 `'cookies-twitter.txt'`。这对于 `yt-dlp` 能够从 Twitter 下载视频是必需的。
+- `discord-bot-token`：您的 Discord 机器人使用的令牌
+- `cache-directory`：缓存视频的目录
+- `cache-clean`：在上传到 Discord 和 S3（如果启用）之后是否删除视频缓存
+- `x-cookie`：指定 X.com 的 cookie 文件
+- `enable-s3-backup`：是否启用 S3 备份。如果为 false，则其他 S3 配置将不会生效
+- `s3-endpoint`：S3 API 服务器地址
+- `s3-access-key` 和 `s3-secret-key`：S3 服务器验证的密钥
+- `s3-bucket-name`：Bucket 名称（必须提前创建好，并且您需要有访问权限）
 
 ## 贡献
 
@@ -93,4 +96,4 @@
 
 ## 许可证
 
-该项目目前没有许可证，也没有计划添加许可证。
+本项目采用 MIT 许可证。有关详细信息，请参阅 LICENSE 文件。
