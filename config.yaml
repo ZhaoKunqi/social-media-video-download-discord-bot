@@ -32,7 +32,3 @@ s3-secret-key: 1919810
 # bucket name(it must to be created already and you have permission to use)
 # bucket名称(必须提前创建好，并且你要有访问权限)
 s3-bucket-name: twitter-video-archive05
-
-# s3 bucket upload time out(in seconds)
-# s3桶上传超时等待时间(秒)
-s3-upload-timeout: 60
