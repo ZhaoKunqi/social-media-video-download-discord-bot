@@ -1,0 +1,6 @@
+enable-s3-backup: True
+default-s3-backup: True
+s3-access-key: 114514
+s3-secret-key: 1919810
+s3-endpoint: http://1.1.4.5:14198
+s3-bucket-name: twitter-video-archive05
