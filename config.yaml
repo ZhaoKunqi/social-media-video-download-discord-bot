@@ -1,5 +1,9 @@
 # This is the configuration file for discord bot
 
+# The discord bot API token
+# 你的Discord机器人使用的令牌
+discord-bot-token: xxxxx1145141919810xxxxx
+
 # the directory caches videos download
 # 缓存视频的目录
 cache-directory: /root/discord/bot/download/
