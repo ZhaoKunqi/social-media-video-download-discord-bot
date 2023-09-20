@@ -3,9 +3,15 @@ import yt_dlp
 import boto3
 import yaml
 import os
+import argparse
+
+# Parse command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument('--config', default='config.yml', help='Path to the configuration file')
+args = parser.parse_args()
 
 # Load configurations from the YAML file
-with open("config.yml", "r") as ymlfile:
+with open(args.config, "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
 
 # Initialize boto3 client for S3
