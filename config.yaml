@@ -1,6 +1,34 @@
+# This is the configuration file for discord bot
+
+# the directory caches videos download
+# 缓存视频的目录
+cache-directory: /root/discord/bot/download/
+
+# delete video cache after uploaded to discord and s3(if enabled)
+# 在上传到discord和s3(如果使用s3的话)以后删除缓存与否
+cache-clean: True
+
+# the cookie file for x.com
+# 指定X.com的cookie文件
+x-cookie: /root/discord/bot/twitter-cookie.txt
+
+# enable s3 backup or not, if false, other s3 config won't be used
+# 启用s3备份与否，如果不启用则其他s3配置不会生效
 enable-s3-backup: True
-default-s3-backup: True
+
+# s3 api server address
+# s3 api服务器地址
+s3-endpoint: http://1.1.4.5:14198
+
+# the access key and secret key for s3
+# s3服务器验证的密钥
 s3-access-key: 114514
 s3-secret-key: 1919810
-s3-endpoint: http://1.1.4.5:14198
+
+# bucket name(it must to be created already and you have permission to use)
+# bucket名称(必须提前创建好，并且你要有访问权限)
 s3-bucket-name: twitter-video-archive05
+
+# s3 bucket upload time out(in seconds)
+# s3桶上传超时等待时间(秒)
+s3-upload-timeout: 60
