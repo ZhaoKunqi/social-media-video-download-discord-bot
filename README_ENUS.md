@@ -1,87 +1,106 @@
-# Discord Twitter Video Downloader Bot
+# Discord Twitter Video Download Bot
 
-[English Document(This page)](README.md) | [中文(中华人民共和国)文档](README_ZHCN.md)|
+[English Document (Current Page)] | [中文(中华人民共和国)文档](README.md) 
 
-This project is a Discord bot that automatically downloads videos from Twitter links received from DM. It uses `yt-dlp`, a python library and command-line program to download videos from Twitter.com, to fetch the video from the Twitter link. After downloading the video, it uploads the file to an S3 bucket and then sends a message to your DM with the original Twitter link and the new S3 link. It also includes the video file as an attachment in the message. 
+This project is a Discord bot that can automatically download videos from Twitter (x.com) links sent to it in DMs.
 
-## Demo
+It uses `yt-dlp`, a Python library and command-line program for downloading videos from x.com, to fetch videos from Twitter links. 
 
-![example01.jpg](example01.jpg)
+After downloading, it will upload the files to an S3 bucket, and DM you back with the original Twitter link, new S3 link, and the video file as an attachment.
 
 ## Features
 
-- Detects Twitter links in Discord messages and automatically downloads the associated video.
-- Uploads the downloaded video to an S3 bucket.
-- Sends a message to the Discord DM with the original Twitter link, the S3 link, and the video file as an attachment.
+- Detects Twitter links in Discord messages and automatically downloads associated videos
+- Uploads downloaded videos to an S3 bucket
+- Sends back a DM with original Twitter link, S3 link, and video file attachment
 
-## Installation & Usage on RHEL-based Linux distros(Alma Linux 9)
+## Use Ready Bot Directly
+
+Currently there is a public bot available to use for free, with rate limiting to 60 videos per hour per Discord account:
+
+Bot invite link (no permission needed): https://discord.com/api/oauth2/authorize?client_id=1153911158730928128&permissions=0&scope=bot
+
+Just add it to any server and DM it x.com (Twitter) links.
+
+## Self-Hosting
+
+Installation and usage on RHEL-based Linux distros
+
+Here we use Alma Linux 9 as an example
 
 ### Prerequisites
 
 - Python 3.6 or higher
-- Discord API Token
-- S3-API compatible block storage
-- `s3cmd` installed
+- Discord API token 
+- S3-compatible object storage if you want S3 backup (otherwise set enable-s3-backup to false in config)
 
-### Steps
+### Steps 
 
 1. Install required RPM packages:
    ```
-   dnf install git python python-pip s3cmd -y
+   dnf install git python python-pip -y
    ```
 
 2. Clone the project:
    ```
    git clone https://github.com/ZhaoKunqi/social-media-video-download-discord-bot.git
    ```
-3. Navigate to the project directory:
+
+3. Enter the project directory:
    ```
    cd social-media-video-download-discord-bot
    ```
-4. Install the required python packages:
+
+4. Install required Python packages:
    ```
    pip install -r requirements.txt
    ```
+   
+5. Configure the config.yml file:
 
-5. Configure the s3cmd:
-   ```
-   #use interactive configuration method
-   s3cmd --configure
-   #or edit config file manually
-   vim /root/.s3cfg
-   ```
+  To use this bot, you'll need to modify some things in config.yml:
 
-   Careful:
-   ```
-   host_base = {{Fill your S3 API address here}}
-   host_bucket = {{Leave here empty, Domain based S3 API is not recommend here unless you know what you doing}}
-   ```
+- `discord-bot-token`: Token your Discord bot uses 
+- `cache-directory`: Directory to cache downloaded videos
+- `cache-clean`: Whether to delete video cache after uploading to Discord and S3 (if enabled)
+- `x-cookie`: Specify x.com cookie file
+- `enable-s3-backup`: Whether to enable S3 backup. Other S3 configs will not apply if this is false.
+- `s3-endpoint`: S3 API server address  
+- `s3-access-front-end`: S3 frontend address to include in messages to user
+- `s3-access-key` and `s3-secret-key`: Keys for authenticating with S3 server
+- `s3-bucket-name`: Bucket name (must exist ahead of time and you must have access)
+- `s3-upload-timeout`: S3 upload timeout limit in seconds
 
-
-6. Open `main.py` in your preferred text editor and replace the following placeholders with your own information:
-   - `'Your-Discord-App-Token'` with your Discord bot token.
-   - `'Your-Bucket-Name'` with the name of your S3 bucket.
-   - `'Your-S3-Address'` with the address of your S3 bucket.
-   - `'cookies-twitter.txt'` with the path to your Twitter cookies file. This is necessary for `yt-dlp` to be able to download videos from Twitter.
-   - `'/root/discord/bot/downloads/'` with the path where you want to store the downloaded videos.
 7. Run the bot:
    ```
-   python main.py
+   python3 main.py
+   ```
+   
+8. Use systemd to run it as a service:
+
+   ```
+   cp discord-bot.service /etc/systemd/system/
+   # Modify paths as needed
+   vim /etc/systemd/system/discord-bot.service
+   
+   systemctl daemon-reload
+   systemctl enable /etc/systemd/system/discord-bot.service --now
    ```
 
-## Configuration
+## Preview
 
-To use this bot, you will need to make some changes to the `main.py` file:
+![example01.jpg](example01.jpg)
 
-- Replace `'Your-Discord-App-Token'` with your Discord bot token.
-- Replace `'Your-Bucket-Name'` and `'Your-S3-Address'` with the name and address of your S3 bucket respectively.
-- Replace `'/root/discord/bot/downloads/'` with the path where you want to cache the downloaded videos.
-- Replace `'cookies-twitter.txt'` with the path to your Twitter cookies file. This is necessary for `yt-dlp` to be able to download videos from Twitter.
+## Changelog:
 
-## Contribution
+Sep 20, 2023: Improved config file format, added more customization options, updated docs
 
-If you want to contribute to this project, please feel free to fork the repository and submit a pull request. We also welcome any issues you may encounter.
+Sep 10, 2023: Added support for x.com links as Twitter app now autogenerates those when sharing copy link
+
+## Contributing
+
+Feel free to fork this repo and submit pull requests if you would like to contribute. We also welcome any issues you encounter.
 
 ## License
 
-This project is currently have no license or any plan for add license to it.
+This project is licensed under the MIT License. See the LICENSE file for details.
