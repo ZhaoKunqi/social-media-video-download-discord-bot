@@ -70,6 +70,7 @@
 - `s3-access-front-end`：S3前端地址,会出现在发送给用户的消息中
 - `s3-access-key` 和 `s3-secret-key`：S3 服务器验证的密钥
 - `s3-bucket-name`：Bucket 名称（必须提前创建好，并且您需要有访问权限）
+- `s3-upload-timeout`：S3上传超时限制(秒)
 
 7. 运行机器人：
    ```
