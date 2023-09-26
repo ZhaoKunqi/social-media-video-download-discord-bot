@@ -6,7 +6,7 @@ discord-bot-token: xxxxx1145141919810xxxxx
 
 # the directory caches videos download
 # 缓存视频的目录
-cache-directory: /root/discord/bot/download/
+cache-directory: /root/discord/bot/download
 
 # delete video cache after uploaded to discord and s3(if enabled)
 # 在上传到discord和s3(如果使用s3的话)以后删除缓存与否
