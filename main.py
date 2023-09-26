@@ -1,9 +1,8 @@
+import time,multiprocessing,itertools,argparse,os
 import discord
 import yt_dlp
 import boto3
 import yaml
-import os
-import argparse
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
@@ -45,16 +44,25 @@ async def on_message(message):
         s3_filename = os.path.basename(filename)
         if cfg['enable-s3-backup']:
             # Upload file to S3
-            with open(filename, 'rb') as data:
-                s3.upload_fileobj(data, cfg['s3-bucket-name'], s3_filename, ExtraArgs={'ACL': 'public-read'})
-
-            reply_message = f"""Original Address:\n```{message.content}```\nObject Storage Address:\n```{cfg["s3-access-front-end"]}/{cfg["s3-bucket-name"]}/{s3_filename}```"""
-            await message.channel.send(reply_message, file=discord.File(cfg['cache-directory'] + '/' + s3_filename))
+            uploader_subprocess = multiprocessing.Process(target=s3_backup, args=(filename, s3_filename), name='Upload_Process')
+            uploader_subprocess.start()
+            uploader_subprocess.join(timeout=cfg['s3-upload-timeout'])
+            uploader_subprocess.terminate()
+            if uploader_subprocess.exitcode is None:
+                reply_message = f"""Original Address:\n```{message.content}```\nObject Storage Address:\n```S3 Video Uploading timeout !```"""
+                await message.channel.send(reply_message, file=discord.File(cfg['cache-directory'] + '/' + s3_filename))
+            if uploader_subprocess.exitcode == 0:
+                reply_message = f"""Original Address:\n```{message.content}```\nObject Storage Address:\n```{cfg["s3-access-front-end"]}/{cfg["s3-bucket-name"]}/{s3_filename}```"""
+                await message.channel.send(reply_message, file=discord.File(cfg['cache-directory'] + '/' + s3_filename))
         else:
             reply_message = f"""Original Address:\n```{message.content}```"""
             await message.channel.send(reply_message, file=discord.File(cfg['cache-directory'] + '/' + s3_filename))
 
         if cfg['cache-clean']:
             os.remove(filename)
+
+def s3_backup(filename, s3_filename):
+    with open(filename, 'rb') as data:
+        s3.upload_fileobj(data, cfg['s3-bucket-name'], s3_filename, ExtraArgs={'ACL': 'public-read'})
 
 client.run(cfg['discord-bot-token'])
