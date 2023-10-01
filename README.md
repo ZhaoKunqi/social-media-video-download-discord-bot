@@ -3,7 +3,7 @@
 
 [中文(中华人民共和国)文档(当前页面)] | [English Document](README_ENUS.md)
 
-该项目是一个 Discord 机器人，可以自动从私信中接收的 Twitter(x.com) 链接下载视频。
+本项目是一个 Discord 机器人，可以自动从私信中接收的 Twitter(x.com) 链接下载视频。
 
 它使用 `yt-dlp`，一个用于从 x.com 下载视频的 Python 库和命令行程序，从 Twitter 链接中获取视频。
 
