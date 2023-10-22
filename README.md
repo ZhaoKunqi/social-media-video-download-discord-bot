@@ -1,6 +1,6 @@
 # Discord Twitter 视频下载机器人
 
-[中文(中华人民共和国)文档(当前页面)] | [English Document](README_ENUS.md) | [日本語文档](README_JP.md)
+[中文(中华人民共和国)文档(当前页面)] | [English Document](README_EN.md) | [日本語文档](README_JP.md)
 
 本项目是一个 Discord 机器人，可以自动从私信中接收的 Twitter(x.com) 链接下载视频。
 
