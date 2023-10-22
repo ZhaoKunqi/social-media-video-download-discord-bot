@@ -1,6 +1,6 @@
 # Discord Twitter 動画ダウンロードボット
 
-[中文(中华人民共和国)文档](README.md) | [English Document](README_ENUS.md) | [日本語文档(現在のページ)](README_JP.md)
+[中文(中华人民共和国)文档](README.md) | [English Document](README_US.md) | [日本語文档(現在のページ)]
 
 このプロジェクトは、Discord ボットで、Twitter(x.com)のリンクが含まれたDMから動画を自動的にダウンロードすることができます。 
 
