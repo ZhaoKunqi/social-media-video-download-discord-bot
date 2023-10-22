@@ -1,40 +1,40 @@
-# Discord Twitter Video Download Bot
+# Discord Twitter Video Download Bot 
 
-[English Document (Current Page)] | [中文(中华人民共和国)文档](README.md) 
+[English Document (Current Page)] | [中文文档(中华人民共和国)](README.md) | [日本語のドキュメント](README_JP.md)
 
-This project is a Discord bot that can automatically download videos from Twitter (x.com) links sent to it in DMs.
+This project is a Discord bot that can automatically download videos from Twitter (x.com) links received in DMs.
 
-It uses `yt-dlp`, a Python library and command-line program for downloading videos from x.com, to fetch videos from Twitter links. 
+It uses `yt-dlp`, a Python library and command line program for downloading videos from x.com links, to get videos from Twitter links. 
 
-After downloading, it will upload the files to an S3 bucket, and DM you back with the original Twitter link, new S3 link, and the video file as an attachment.
+After download, it will upload the files to an S3 bucket and send you a DM with the original Twitter link, new S3 link, and the video file as an attachment.
 
 ## Features
 
-- Detects Twitter links in Discord messages and automatically downloads associated videos
-- Uploads downloaded videos to an S3 bucket
-- Sends back a DM with original Twitter link, S3 link, and video file attachment
+- Detects Twitter links in Discord messages and automatically downloads associated videos.
+- Uploads downloaded videos to an S3 bucket. 
+- Sends a DM containing the original Twitter link, S3 link, and video file attachment.
 
-## Use Ready Bot Directly
+## Direct Usage
 
-Currently there is a public bot available to use for free, with rate limiting to 60 videos per hour per Discord account:
+Currently a public bot is provided without S3 backup function, which can be used for free. The current rate limit is 60 videos per hour per Discord account.
 
 Bot invite link (no permission needed): https://discord.com/api/oauth2/authorize?client_id=1153911158730928128&permissions=0&scope=bot
 
-Just add it to any server and DM it x.com (Twitter) links.
+Just add it to any server and DM it with x.com (Twitter) links.
 
-## Self-Hosting
+## Self-hosting (systemd)
 
-Installation and usage on RHEL-based Linux distros
+Installation and usage on RHEL-based Linux distributions
 
-Here we use Alma Linux 9 as an example
+Alma Linux 9 is used here
 
 ### Prerequisites
 
 - Python 3.6 or higher
-- Discord API token 
-- S3-compatible object storage if you want S3 backup (otherwise set enable-s3-backup to false in config)
+- Discord bot token 
+- S3 compatible object storage (optional, set `enable-s3-backup` to False in config if not available)
 
-### Steps 
+### Steps
 
 1. Install required RPM packages:
    ```
@@ -56,33 +56,33 @@ Here we use Alma Linux 9 as an example
    pip install -r requirements.txt
    ```
    
-5. Configure the config.yml file:
+5. Configure the bot
 
-  To use this bot, you'll need to modify some things in config.yml:
+  You'll need to make some changes to the config.yml file to use the bot.
 
-- `discord-bot-token`: Token your Discord bot uses 
+- `discord-bot-token`: The token used by your Discord bot 
 - `cache-directory`: Directory to cache downloaded videos
 - `cache-clean`: Whether to delete video cache after uploading to Discord and S3 (if enabled)
-- `x-cookie`: Specify x.com cookie file
-- `enable-s3-backup`: Whether to enable S3 backup. Other S3 configs will not apply if this is false.
+- `x-cookie`: Cookie file to use for x.com
+- `enable-s3-backup`: Whether to enable S3 backup. Other S3 configs will be ignored if this is false.
 - `s3-endpoint`: S3 API server address  
-- `s3-access-front-end`: S3 frontend address to include in messages to user
-- `s3-access-key` and `s3-secret-key`: Keys for authenticating with S3 server
-- `s3-bucket-name`: Bucket name (must exist ahead of time and you must have access)
-- `s3-upload-timeout`: S3 upload timeout limit in seconds
+- `s3-access-front-end`: S3 front-end address, will appear in messages sent to users
+- `s3-access-key` and `s3-secret-key`: Keys for S3 server authentication
+- `s3-bucket-name`: Bucket name (must exist and you need access)
+- `s3-upload-timeout`: S3 upload timeout limit (seconds)
 
 7. Run the bot:
    ```
    python3 main.py
    ```
-   
-8. Use systemd to run it as a service:
+
+8. Use systemd to run it as a service
 
    ```
    cp discord-bot.service /etc/systemd/system/
-   # Modify paths as needed
+   # Modify the path as needed
    vim /etc/systemd/system/discord-bot.service
-   
+
    systemctl daemon-reload
    systemctl enable /etc/systemd/system/discord-bot.service --now
    ```
@@ -91,16 +91,18 @@ Here we use Alma Linux 9 as an example
 
 ![example01.jpg](example01.jpg)
 
-## Changelog:
+## Changelog
 
-Sep 20, 2023: Improved config file format, added more customization options, updated docs
+2023-09-26: Optimized S3 sync, added timeout, added new config `s3-upload-timeout`, fixed issue with failing to return videos when S3 has connectivity issues, improved reliability.
 
-Sep 10, 2023: Added support for x.com links as Twitter app now autogenerates those when sharing copy link
+2023-09-20: Improved config file format, added more customization options, updated docs
+
+2023-09-10: Adapted to also detect videos from x.com links as now x.com links are automatically generated when sharing Twitter links from app.
 
 ## Contributing
 
-Feel free to fork this repo and submit pull requests if you would like to contribute. We also welcome any issues you encounter.
+Feel free to fork this repository and submit pull requests if you would like to contribute. Issues are also welcome! 
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is under the MIT License. See the LICENSE file for details.
