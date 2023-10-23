@@ -89,7 +89,13 @@
 
 ## 效果预览
 
-![example01.jpg](example01.jpg)
+### 正常情况
+
+![example02.jpg](example02.jpg)
+
+### S3服务器上传超时仅返回视频，并且报错
+
+![example03.jpg](example03.jpg)
 
 ## 更新记录:
 
