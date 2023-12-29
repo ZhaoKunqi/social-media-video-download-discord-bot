@@ -32,7 +32,7 @@
 
 - Python 3.6 或更高版本
 - Discord API 令牌
-- 兼容 S3 API 的块存储(如果没有，则要在配置文件里将enable-s3-backup设置为False)
+- 兼容 S3 API 的对象存储服务(如果没有，则要在配置文件里将enable-s3-backup设置为False)
 
 ### 步骤
 
@@ -86,6 +86,16 @@
    systemctl daemon-reload
    systemctl enable /etc/systemd/system/discord-bot.service --now
    ```
+   
+### 备份策略相关配置文件的说明
+
+在前置条件中有提到需要兼容S3 API的对象存储服务
+
+如果没有兼容S3 API的对象存储服务，请将配置文件中的enable-s3-backup改为false,
+
+在关闭S3备份的情况下，如果您的机器人服务端上有足够的磁盘空间并且您希望将下载的视频也备份到服务器上，您可以将配置文件中的cache-clean设为false，这样机器人就不会自动删除缓存的视频文件，您可以在cache-directory指定的缓存路径中找到您下载过的全部视频文件。
+
+如果您不想启动S3备份并且服务器上没有足够的硬盘空间，请将配置文件中的enable-s3-backup改为false,并且保持cache-clean为true，这样机器人只会在Discord私聊频道里上传您需要的视频文件给您。
 
 ## 效果预览
 
@@ -106,6 +116,8 @@
 ![example03.jpg](example03.jpg)
 
 ## 更新记录:
+
+2023年-12月-30日: 为README.md增加了更多的备份策略相关配置文件的说明。
 
 2023年-10月-26日: 为README.md添加了三张效果预览图，更新英语文档，添加日语文档。
 
