@@ -30,7 +30,7 @@ async def on_message(message):
 
     if message.content.startswith('!'):
         return
-
+    # if 'twitter.com' in message.content or 'x.com' in message.content: ????
     if 'x.com' in message.content:
         ydl_opts = {
             'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
