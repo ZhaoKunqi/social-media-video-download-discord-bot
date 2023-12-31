@@ -20,7 +20,7 @@
 
 机器人链接(无需权限): https://discord.com/api/oauth2/authorize?client_id=1153911158730928128&permissions=0&scope=bot
 
-随便加进来私聊发给他推特链接(x.com的)即可使用
+随便加进来私聊发给他推特链接(x.com或者twitter.com的链接)即可使用
 
 ## 自己部署(systemd方式)
 
@@ -116,6 +116,8 @@
 ![example03.jpg](example03.jpg)
 
 ## 更新记录:
+
+2023年-12月-31日: 因为马老板奇怪的折腾所以改成了同时识别'x.com'和'twitter.com'的链接
 
 2023年-12月-30日: 为README.md增加了更多的备份策略相关配置文件的说明。
 
