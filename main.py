@@ -27,6 +27,10 @@ async def on_message(message):
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(message.content, download=True)
+            if 'entries' in info_dict:
+                print('multiple video')
+            if 'entries' not in info_dict:
+                 print("single video")
             filename = ydl.prepare_filename(info_dict)
         s3_filename = os.path.basename(filename)
         if cfg['enable-s3-backup']:
