@@ -26,7 +26,7 @@ s3-endpoint: http://11.45.14.19:19810
 
 # s3 front end address, this one will be sending to users, if you are using public cloud or don't want use reverse proxy to shield private cloud s3, fill this the same value as s3-endpoint
 # s3前端地址,这个地址会被发送给用户,如果你用的是公有云对象存储或者不想使用反向代理来保护你的私有云服务器, 这里填的地址将和s3-endpoint保持一致
-s3-access-front-end: https://s3.example.com
+s3-access-front-end: https://s3-public-access.yourdomain.com
 
 # the access key and secret key for s3
 # s3服务器验证的密钥
