@@ -1,6 +1,6 @@
 # Discord Twitter Video Download Bot 
 
-[English Document (Current Page)] | [中文文档(中华人民共和国)](README.md) | [日本語のドキュメント](README_JP.md)
+[English Document (Current Page)] | [中文文档(中华人民共和国)](README.md) | [日本語文档](README_JP.md)
 
 This project is a Discord bot that can automatically download videos from Twitter (x.com) links received in DMs.
 
