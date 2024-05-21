@@ -16,6 +16,11 @@ cache-clean: True
 # 指定X.com的cookie文件
 x-cookie: /root/discord/bot/twitter-cookie.txt
 
+# the username and password for x.com, used when cookie verification failed
+# 指定X.com的用户名和密码, 会在cookie不可用时生效
+x-username: ExampleUsername
+x-password: 1145141919810
+
 # enable s3 backup or not, if false, other s3 config won't be used
 # 启用s3备份与否，如果不启用则其他s3配置不会生效
 enable-s3-backup: True
